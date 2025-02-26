@@ -54,21 +54,62 @@ SourceTableGenerator.GameProfiles = {
       ["EntityList"] = {signature = "B9 ? ? ? ? E8 ? ? ? ? 83 7D DC 00", offset = 1},
       ["ViewMatrix"] = {signature = "0F 10 05 ? ? ? ? 8D 85 ? ? ? ? B9", offset = 3}
     }
+  },
+  ["CS2"] = {
+    processName = "cs2.exe",
+    clientModule = "client.dll",
+    engineModule = "engine2.dll",
+    commonPointers = {
+      ["LocalPlayer"] = {signature = "48 8B 05 ? ? ? ? 48 8B 88 ? ? ? ? 48 85 C9 74 06 48 8B 01", offset = 3},
+      ["EntityList"] = {signature = "48 8B 0D ? ? ? ? 48 89 7C 24 ? 8B FA C1 EB", offset = 3},
+      ["ViewMatrix"] = {signature = "48 8D 0D ? ? ? ? 48 C1 E0 06", offset = 3}
+    },
+    commonStructures = {
+      ["Player"] = {
+        {name = "Health", offset = 0x32C, type = vtInt},
+        {name = "Team", offset = 0x3BF, type = vtByte},
+        {name = "Position", offset = 0x1224, type = vtSingle, isVector = true},
+        {name = "ViewAngles", offset = 0x1510, type = vtSingle, isVector = true}
+      }
+    }
   }
 }
 
 -- Fonctions utilitaires
 function SourceTableGenerator.GetModuleBase(moduleName)
-  local modules = enumModules()
-  for i=1, #modules do
-    if string.lower(modules[i].Name) == string.lower(moduleName) then
-      return modules[i].BaseAddress
+  -- Utiliser une méthode alternative pour obtenir l'adresse de base du module
+  -- Cette fonction sera appelée plus tard avec les informations fournies par l'utilisateur
+  
+  -- Pour l'instant, nous pouvons utiliser getAddress qui est plus fiable
+  -- Si le module est chargé, getAddress devrait pouvoir le trouver
+  local moduleAddress = getAddress(moduleName)
+  if moduleAddress ~= nil and moduleAddress ~= 0 then
+    return moduleAddress
+  end
+  
+  -- Sinon, demander à l'utilisateur de fournir l'adresse
+  local result = inputQuery("Adresse du module", "Veuillez entrer l'adresse de base de " .. moduleName .. " (en hexadécimal):", "")
+  if result then
+    local address = tonumber(result, 16)
+    if address then
+      return address
     end
   end
+  
   return nil
 end
 
 function SourceTableGenerator.FindSignature(signature, moduleBase, moduleSize)
+  -- Vérifier si moduleBase est nil
+  if moduleBase == nil then
+    return nil
+  end
+  
+  -- Si moduleSize n'est pas fourni, utiliser une taille par défaut
+  if moduleSize == nil then
+    moduleSize = 0x1000000 -- 16 MB, taille raisonnable pour la plupart des modules
+  end
+  
   local scanResult = AOBScan(signature, '+W', 0, moduleBase, moduleBase + moduleSize)
   if scanResult == nil or scanResult.Count == 0 then
     return nil
@@ -87,12 +128,11 @@ function SourceTableGenerator.ReadPointer(address, offset)
 end
 
 function SourceTableGenerator.DetectGame()
-  local processName = getProcessName()
-  for name, profile in pairs(SourceTableGenerator.GameProfiles) do
-    if string.lower(processName) == string.lower(profile.processName) then
-      return name, profile
-    end
-  end
+  -- Utiliser une approche plus simple pour détecter le jeu
+  -- Vérifier si nous pouvons obtenir le nom du processus d'une autre manière
+  -- Par exemple, en demandant à l'utilisateur de sélectionner le jeu manuellement
+  
+  -- Cette fonction sera appelée plus tard lorsque l'utilisateur sélectionnera un jeu dans l'interface
   return nil, nil
 end
 
@@ -158,66 +198,45 @@ function SourceTableGenerator.CreateMenu()
   mainForm.Caption = "Source Table Generator"
   mainForm.Width = 500
   mainForm.Height = 400
-  mainForm.Position = "poScreenCenter"
-  mainForm.BorderStyle = "bsSizeable"
   
-  -- Création des composants
+  -- Créer les contrôles
+  local gameLabel = createLabel(mainForm)
+  gameLabel.Caption = "Jeu:"
+  gameLabel.Left = 10
+  gameLabel.Top = 10
+  
   local gameComboBox = createComboBox(mainForm)
-  gameComboBox.Parent = mainForm
-  gameComboBox.Left = 120
-  gameComboBox.Top = 20
+  gameComboBox.Left = 10
+  gameComboBox.Top = 30
   gameComboBox.Width = 200
   
-  local gameLabel = createLabel(mainForm)
-  gameLabel.Parent = mainForm
-  gameLabel.Left = 20
-  gameLabel.Top = 23
-  gameLabel.Caption = "Jeu détecté:"
-  
   local scanButton = createButton(mainForm)
-  scanButton.Parent = mainForm
-  scanButton.Left = 350
-  scanButton.Top = 18
-  scanButton.Width = 120
   scanButton.Caption = "Scanner"
-  
-  local progressBar = createProgressBar(mainForm)
-  progressBar.Parent = mainForm
-  progressBar.Left = 20
-  progressBar.Top = 60
-  progressBar.Width = 450
-  
-  local resultsMemo = createMemo(mainForm)
-  resultsMemo.Parent = mainForm
-  resultsMemo.Left = 20
-  resultsMemo.Top = 100
-  resultsMemo.Width = 450
-  resultsMemo.Height = 200
-  resultsMemo.ReadOnly = true
-  resultsMemo.ScrollBars = "ssVertical"
+  scanButton.Left = 220
+  scanButton.Top = 30
+  scanButton.Width = 100
   
   local generateButton = createButton(mainForm)
-  generateButton.Parent = mainForm
-  generateButton.Left = 20
-  generateButton.Top = 320
-  generateButton.Width = 220
   generateButton.Caption = "Générer Table"
+  generateButton.Left = 330
+  generateButton.Top = 30
+  generateButton.Width = 150
   generateButton.Enabled = false
   
-  local closeButton = createButton(mainForm)
-  closeButton.Parent = mainForm
-  closeButton.Left = 250
-  closeButton.Top = 320
-  closeButton.Width = 220
-  closeButton.Caption = "Fermer"
+  local progressBar = createProgressBar(mainForm)
+  progressBar.Left = 10
+  progressBar.Top = 70
+  progressBar.Width = 470
   
-  -- Détection du jeu
-  local gameName, gameProfile = SourceTableGenerator.DetectGame()
-  if gameName then
-    gameComboBox.Text = gameName
-  else
-    gameComboBox.Text = "Jeu non reconnu"
-  end
+  local resultsMemo = createMemo(mainForm)
+  resultsMemo.Left = 10
+  resultsMemo.Top = 100
+  resultsMemo.Width = 470
+  resultsMemo.Height = 250
+  resultsMemo.ReadOnly = true
+  
+  -- Sélectionner le premier jeu par défaut
+  gameComboBox.Text = "Sélectionnez un jeu"
   
   -- Remplir la liste des jeux
   for name, _ in pairs(SourceTableGenerator.GameProfiles) do
@@ -269,7 +288,9 @@ function SourceTableGenerator.CreateMenu()
       
       resultsMemo.Lines.add("Recherche de " .. name .. "...")
       local moduleBase = name:find("View") and engineBase or clientBase
-      local moduleSize = name:find("View") and getModuleSize(profile.engineModule) or getModuleSize(profile.clientModule)
+      -- Utiliser une taille par défaut au lieu de getModuleSize
+      -- local moduleSize = name:find("View") and getModuleSize(profile.engineModule) or getModuleSize(profile.clientModule)
+      local moduleSize = 0x1000000 -- 16 MB, taille raisonnable pour la plupart des modules
       
       local address = SourceTableGenerator.FindSignature(info.signature, moduleBase, moduleSize)
       if address then
@@ -331,10 +352,6 @@ function SourceTableGenerator.CreateMenu()
     end
     
     messageDialog("Table générée avec succès!", mtInformation, mbOK)
-  end
-  
-  closeButton.OnClick = function()
-    mainForm.close()
   end
   
   mainForm.show()

@@ -5,6 +5,8 @@ echo.
 
 :: Vérifier si Cheat Engine est installé
 set "CEINSTALLED=0"
+
+:: Vérifier les chemins standards avec numéro de version
 if exist "%PROGRAMFILES%\Cheat Engine 7.4\cheatengine-x86_64.exe" (
     set "CEPATH=%PROGRAMFILES%\Cheat Engine 7.4"
     set "CEINSTALLED=1"
@@ -27,6 +29,16 @@ if exist "%PROGRAMFILES%\Cheat Engine 7.2\cheatengine-x86_64.exe" (
 )
 if exist "%PROGRAMFILES(X86)%\Cheat Engine 7.2\cheatengine-x86_64.exe" (
     set "CEPATH=%PROGRAMFILES(X86)%\Cheat Engine 7.2"
+    set "CEINSTALLED=1"
+)
+
+:: Vérifier le chemin sans numéro de version (dernières versions)
+if exist "%PROGRAMFILES%\Cheat Engine\cheatengine-x86_64.exe" (
+    set "CEPATH=%PROGRAMFILES%\Cheat Engine"
+    set "CEINSTALLED=1"
+)
+if exist "%PROGRAMFILES(X86)%\Cheat Engine\cheatengine-x86_64.exe" (
+    set "CEPATH=%PROGRAMFILES(X86)%\Cheat Engine"
     set "CEINSTALLED=1"
 )
 
