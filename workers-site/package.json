@@ -1,0 +1,11 @@
+{
+  "name": "workers-site",
+  "version": "1.0.0",
+  "description": "Worker script for serving static content via Cloudflare Pages",
+  "main": "index.js",
+  "author": "Valve Source SDK Web",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.0"
+  }
+}
