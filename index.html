@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valve Source SDK Tools</title>
+    <link rel="stylesheet" href="css/spider-web.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <canvas id="spiderWebCanvas"></canvas>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-code fa-2x"></i>
+                <h1>Valve Source SDK Tools</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">Accueil</a></li>
+                    <li><a href="#sdk-generator">SDK Generator</a></li>
+                    <li><a href="#cheat-engine">Cheat Engine Plugin</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                    <li><a href="#download">Téléchargement</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Outils pour le développement Source Engine</h2>
+                <p>Générez facilement des SDK pour les jeux basés sur Source Engine et utilisez nos plugins pour Cheat Engine afin d'explorer et de modifier les jeux.</p>
+                <div class="cta-buttons">
+                    <a href="#download" class="btn btn-primary">Télécharger</a>
+                    <a href="#documentation" class="btn btn-secondary">Documentation</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-cubes fa-10x"></i>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Caractéristiques principales</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>SDK Generator</h3>
+                    <p>Générez automatiquement des SDKs pour les jeux Source et Source 2 en analysant les interfaces et modules du jeu.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Cheat Engine Plugin</h3>
+                    <p>Créez rapidement des tables Cheat Engine pour l'analyse et le débogage des jeux Source.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3>Multi-jeux</h3>
+                    <p>Support pour de nombreux jeux Source et Source 2, incluant Black Mesa, Half-Life 2, CS:GO et plus encore.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Extensible</h3>
+                    <p>Architecture modulaire permettant d'ajouter facilement de nouveaux jeux et fonctionnalités.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sdk-generator" class="tool-section">
+        <div class="container">
+            <h2 class="section-title">SDK Generator</h2>
+            <div class="tool-content">
+                <div class="tool-description">
+                    <h3>Générez des SDK pour n'importe quel jeu Source</h3>
+                    <p>Notre outil SDK Generator vous permet de créer facilement des SDK pour les jeux basés sur Source Engine, même ceux qui n'ont pas de SDK officiel.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Compatible avec tous les jeux Source Engine</li>
+                        <li><i class="fas fa-check"></i> Extraction automatique des classes et structures</li>
+                        <li><i class="fas fa-check"></i> Génération de headers C++ prêts à l'emploi</li>
+                        <li><i class="fas fa-check"></i> Support pour les offsets et vtables</li>
+                    </ul>
+                    <a href="#documentation" class="btn btn-primary">En savoir plus</a>
+                </div>
+                <div class="tool-image">
+                    <i class="fas fa-cogs fa-10x"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cheat-engine" class="tool-section alt-bg">
+        <div class="container">
+            <div class="tool-image">
+                <i class="fas fa-search-plus fa-10x"></i>
+            </div>
+            <div class="tool-content">
+                <h3>Plugin Cheat Engine pour Source Engine</h3>
+                <p>Explorez et modifiez les jeux Source Engine avec notre plugin spécialisé pour Cheat Engine.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Scan mémoire optimisé pour Source Engine</li>
+                    <li><i class="fas fa-check"></i> Visualisation des structures de données</li>
+                    <li><i class="fas fa-check"></i> Modification en temps réel des variables</li>
+                    <li><i class="fas fa-check"></i> Débogage avancé des entités et des fonctions</li>
+                </ul>
+                <a href="#documentation" class="btn btn-primary">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="documentation" class="documentation">
+        <div class="container">
+            <h2 class="section-title">Documentation</h2>
+            <div class="doc-tabs">
+                <div class="tab-nav">
+                    <button class="tab-btn active" data-tab="installation">Installation</button>
+                    <button class="tab-btn" data-tab="sdk-usage">Utilisation du SDK Generator</button>
+                    <button class="tab-btn" data-tab="ce-usage">Utilisation du Plugin CE</button>
+                    <button class="tab-btn" data-tab="faq">FAQ</button>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="installation">
+                        <h3>Installation</h3>
+                        <h4>SDK Generator</h4>
+                        <ol>
+                            <li>Téléchargez la dernière version du SDK Generator</li>
+                            <li>Extrayez l'archive dans un dossier de votre choix</li>
+                            <li>Exécutez ValveSDKMaker.exe</li>
+                        </ol>
+                        <h4>Cheat Engine Plugin</h4>
+                        <ol>
+                            <li>Téléchargez la dernière version du plugin</li>
+                            <li>Extrayez l'archive</li>
+                            <li>Exécutez install.bat pour installer automatiquement le plugin</li>
+                            <li>Redémarrez Cheat Engine</li>
+                        </ol>
+                    </div>
+                    <div class="tab-pane" id="sdk-usage">
+                        <h3>Utilisation du SDK Generator</h3>
+                        <h4>Configuration du jeu cible</h4>
+                        <p>Par défaut, l'outil est configuré pour cibler Black Mesa. Pour changer le jeu cible, modifiez la constante TARGET_GAME dans le fichier main.cpp :</p>
+                        <pre><code>// Options: blackmesa, hl2, css, gmod, portal, portal2, csgo, dota2, custom
+const std::string TARGET_GAME = "blackmesa";</code></pre>
+                        <h4>Génération du SDK</h4>
+                        <ol>
+                            <li>Lancez d'abord le jeu cible</li>
+                            <li>Exécutez ValveSDKMaker.exe en tant qu'administrateur</li>
+                            <li>L'outil détectera automatiquement le processus du jeu et commencera l'analyse</li>
+                            <li>Une fois terminé, un SDK sera généré dans le dossier output/[nom_du_jeu]</li>
+                        </ol>
+                    </div>
+                    <div class="tab-pane" id="ce-usage">
+                        <h3>Utilisation du Plugin Cheat Engine</h3>
+                        <h4>Générer une table pour un jeu Source</h4>
+                        <ol>
+                            <li>Lancez le jeu cible (Black Mesa, Half-Life 2, CS:GO, etc.)</li>
+                            <li>Ouvrez Cheat Engine et attachez-le au processus du jeu</li>
+                            <li>Dans la barre de menu de Cheat Engine, cliquez sur "Source Table Generator"</li>
+                            <li>Le plugin détectera automatiquement le jeu en cours d'exécution</li>
+                            <li>Cliquez sur "Scanner" pour rechercher les pointeurs et structures communes</li>
+                            <li>Une fois le scan terminé, cliquez sur "Générer Table" pour créer la table</li>
+                        </ol>
+                    </div>
+                    <div class="tab-pane" id="faq">
+                        <h3>Questions fréquemment posées</h3>
+                        <div class="faq-item">
+                            <h4>Est-ce que ces outils fonctionnent avec tous les jeux Source ?</h4>
+                            <p>Les outils sont conçus pour fonctionner avec la plupart des jeux basés sur le moteur Source et Source 2. Cependant, certains jeux peuvent nécessiter des configurations spécifiques en raison de modifications apportées au moteur.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Est-ce légal d'utiliser ces outils ?</h4>
+                            <p>Ces outils sont destinés uniquement à des fins éducatives et de développement de mods légitimes. L'utilisation de ces outils pour développer des cheats ou d'autres logiciels malveillants est strictement interdite et peut entraîner des bannissements de votre compte de jeu.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h4>Comment puis-je ajouter un nouveau jeu ?</h4>
+                            <p>Pour le SDK Generator, modifiez le fichier main.cpp et ajoutez une nouvelle entrée dans la table supportedGames. Pour le plugin Cheat Engine, modifiez le fichier SourceTableGenerator.lua et ajoutez une nouvelle entrée dans la table GameProfiles.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="download" class="download-section">
+        <div class="container">
+            <h2 class="section-title">Téléchargement</h2>
+            <div class="download-cards">
+                <div class="download-card">
+                    <i class="fas fa-download fa-3x"></i>
+                    <h3>SDK Generator</h3>
+                    <p>Version 2.1.0</p>
+                    <ul class="download-features">
+                        <li><i class="fas fa-check-circle"></i> Support pour Source 1</li>
+                        <li><i class="fas fa-check-circle"></i> Support pour Source 2</li>
+                        <li><i class="fas fa-check-circle"></i> Interface graphique</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Télécharger</a>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-plug fa-3x"></i>
+                    <h3>Cheat Engine Plugin</h3>
+                    <p>Version 1.5.0</p>
+                    <ul class="download-features">
+                        <li><i class="fas fa-check-circle"></i> Compatible CE 7.2+</li>
+                        <li><i class="fas fa-check-circle"></i> Templates prédéfinis</li>
+                        <li><i class="fas fa-check-circle"></i> Scan automatique</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Télécharger</a>
+                </div>
+                <div class="download-card">
+                    <i class="fas fa-book fa-3x"></i>
+                    <h3>Documentation</h3>
+                    <p>PDF et HTML</p>
+                    <ul class="download-features">
+                        <li><i class="fas fa-check-circle"></i> Tutoriels détaillés</li>
+                        <li><i class="fas fa-check-circle"></i> Exemples de code</li>
+                        <li><i class="fas fa-check-circle"></i> Référence API</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Télécharger</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-code fa-2x"></i>
+                    <p>Valve Source SDK Tools</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Liens Rapides</h3>
+                    <ul>
+                        <li><a href="#home">Accueil</a></li>
+                        <li><a href="#sdk-generator">SDK Generator</a></li>
+                        <li><a href="#cheat-engine">Cheat Engine Plugin</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
+                        <li><a href="#download">Téléchargement</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Restez Informé</h3>
+                    <p>Abonnez-vous pour recevoir les dernières mises à jour et nouveautés.</p>
+                    <form>
+                        <input type="email" placeholder="Votre email">
+                        <button type="submit" class="btn btn-primary">S'abonner</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Valve Source SDK Tools. Tous droits réservés.</p>
+                <p>Valve, Source, et les noms des jeux associés sont des marques déposées de Valve Corporation. Ce projet n'est pas affilié à Valve Corporation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

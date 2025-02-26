@@ -1,0 +1,505 @@
+/* Base Styles with Spider Web Theme */
+:root {
+    --primary-color: #2c2c2c;
+    --secondary-color: #1a1a1a;
+    --accent-color: #444444;
+    --dark-color: #000000;
+    --light-color: #333333;
+    --text-color: #e0e0e0;
+    --text-light: #ffffff;
+    --border-radius: 4px;
+    --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    position: relative;
+    overflow-x: hidden;
+    background-image: 
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5)),
+        radial-gradient(circle at center, #2a2a2a 0%, #1a1a1a 70%, #000000 100%);
+    min-height: 100vh;
+}
+
+/* Make sure all content sections are above the web effect */
+header, section, footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animated Spider Web Canvas */
+#spiderWebCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    background: transparent;
+}
+
+/* Suppression des anciens styles de toile d'araignée qui ne sont plus nécessaires */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-light);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #999999;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    box-shadow: 0 0 10px rgba(68, 68, 68, 0.5);
+}
+
+.btn-primary:hover {
+    background-color: #555555;
+    color: var(--text-light);
+}
+
+.btn-secondary {
+    background-color: var(--dark-color);
+    color: var(--text-light);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: #111111;
+    color: var(--text-light);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: var(--text-light);
+    position: relative;
+    padding-bottom: 1rem;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--text-light), transparent);
+}
+
+/* Header */
+header {
+    background-color: var(--dark-color);
+    padding: 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.3));
+}
+
+.logo h1 {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo and Icons Styling */
+.logo i {
+    color: var(--text-light);
+    margin-right: 15px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hero-image i {
+    color: var(--text-light);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    opacity: 0.8;
+    transition: all 0.5s ease;
+}
+
+.hero-image i:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+}
+
+.tool-image i {
+    color: var(--text-light);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    opacity: 0.8;
+    transition: all 0.5s ease;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tool-image i:hover {
+    transform: scale(1.05);
+    opacity: 1;
+    text-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+.feature-list li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.feature-list li i {
+    color: var(--text-light);
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.footer-logo i {
+    color: var(--text-light);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Navigation Bar Improvements */
+nav {
+    flex: 1;
+    max-width: 800px;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+nav ul li {
+    margin: 0;
+    position: relative;
+}
+
+nav ul li a {
+    color: var(--text-light);
+    font-weight: 500;
+    padding: 12px 15px;
+    border-radius: var(--border-radius);
+    position: relative;
+    display: block;
+    text-align: center;
+    letter-spacing: 0.5px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--text-light), transparent);
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::before,
+nav ul li a.active::before {
+    width: 70%;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Hero Section */
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 30%, transparent 0, transparent 70%, rgba(255, 255, 255, 0.05) 100%),
+        radial-gradient(circle at 70% 70%, transparent 0, transparent 70%, rgba(255, 255, 255, 0.05) 100%);
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1;
+    padding-right: 40px;
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: right;
+}
+
+.hero-image img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Download Section */
+.download-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--secondary-color), var(--dark-color));
+}
+
+.download-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.download-card {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    flex: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.download-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.download-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.download-card i {
+    color: var(--text-light);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.download-card:hover i {
+    transform: scale(1.1);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.download-card h3 {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.download-card p {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.download-features {
+    text-align: left;
+    margin-bottom: 25px;
+    padding-left: 20px;
+}
+
+.download-features li {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.download-features li i {
+    color: var(--text-light);
+    margin-right: 10px;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+.download-card .btn {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Additional Styles for Other Sections */
+/* You can continue adding styles for other sections as needed */
+
+/* JavaScript to create the spider web effect */
+/* Add this script tag to your HTML file */
+/* 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const webContainer = document.createElement('div');
+    webContainer.className = 'web-container';
+    document.body.appendChild(webContainer);
+    
+    // Create spider web lines
+    const numLines = 30;
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    
+    for (let i = 0; i < numLines; i++) {
+        const line = document.createElement('div');
+        line.className = 'web-line';
+        
+        // Random properties for each line
+        const angle = Math.random() * Math.PI * 2;
+        const length = Math.random() * 100 + 100;
+        const thickness = Math.random() * 1 + 0.5;
+        const delay = Math.random() * 5;
+        
+        // Position and style the line
+        line.style.width = `${length}vw`;
+        line.style.height = `${thickness}px`;
+        line.style.left = `${centerX}px`;
+        line.style.top = `${centerY}px`;
+        line.style.transform = `rotate(${angle}rad)`;
+        line.style.animationDelay = `${delay}s`;
+        
+        webContainer.appendChild(line);
+    }
+    
+    // Create radial web lines
+    const numRadials = 8;
+    for (let i = 0; i < numRadials; i++) {
+        const angle = (i / numRadials) * Math.PI * 2;
+        for (let j = 1; j <= 5; j++) {
+            const radius = j * 10;
+            const line = document.createElement('div');
+            line.className = 'web-line';
+            line.style.width = `${radius * 2}vw`;
+            line.style.height = `${1}px`;
+            line.style.left = `${centerX}px`;
+            line.style.top = `${centerY}px`;
+            line.style.transform = `rotate(${angle}rad)`;
+            line.style.opacity = `${0.1 - j * 0.01}`;
+            line.style.borderRadius = '50%';
+            webContainer.appendChild(line);
+        }
+    }
+});
+</script>
+*/
