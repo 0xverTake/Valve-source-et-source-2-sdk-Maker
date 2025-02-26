@@ -82,6 +82,12 @@ document.addEventListener('DOMContentLoaded', function() {
             e.preventDefault();
             
             const targetId = this.getAttribute('href');
+            
+            // Vérifier si targetId est valide (pas juste '#')
+            if (targetId === '#' || targetId === '') {
+                return; // Ne rien faire si le lien est juste '#' ou vide
+            }
+            
             const targetElement = document.querySelector(targetId);
             
             if (targetElement) {
