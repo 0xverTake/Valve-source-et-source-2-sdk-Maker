@@ -1,0 +1,5 @@
+[site]
+bucket = "./"
+entry-point = "workers-site"
+
+[site.static]

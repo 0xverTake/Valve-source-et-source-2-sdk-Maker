@@ -1,0 +1,9 @@
+{
+  "name": "valve-source-sdk-web",
+  "version": "1.0.0",
+  "description": "Interface Web pour Valve Source SDK Tools",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build step required'"
+  }
+}
