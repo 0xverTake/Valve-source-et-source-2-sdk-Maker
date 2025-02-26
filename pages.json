@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "name": "valvesdkmaker",
+  "build": {
+    "rootDirectory": "./",
+    "command": null,
+    "outputDirectory": "./"
+  },
+  "routes": [
+    {
+      "pattern": "/*",
+      "script": null
+    }
+  ]
+}
